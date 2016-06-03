@@ -6,31 +6,20 @@ $(document).ready(function(){
     clicks++;
     console.log( 'generateRow clicked');
     // crete new container div
-    var newContainer = document.createElement('div');
+    var newDiv = document.createElement('div');
     // set class
-    newContainer.className='container';
+    newDiv.className='container';
     // set id
-    newContainer.id='row' + clicks;
+    newDiv.id='row' + clicks;
     // create change button
-    var changeButton = document.createElement('button');
-    changeButton.textContent='change';
-    changeButton.className = 'change';
+    var newButton = document.createElement('button');
+    newButton.textContent='change';
+    newButton.className = 'change';
     // append to container
-    newContainer.appendChild( changeButton );
-    // create delete button
-    var deleteButton = document.createElement('button');
-    deleteButton.textContent='delete';
-    deleteButton.className = 'delete';
-    // append to container
-    newContainer.appendChild( deleteButton );
-    // create text output
-    var clicksOutput = document.createElement('p');
-    // append to container
-    newContainer.appendChild( clicksOutput );
-    // append container to body
-    $('body').append( newContainer );
+    newDiv.appendChild( newButton );
+    $('body').append( newDiv );
     // set text for all p tags
-    $('p').text( clicks );
+    $('p').text( "info goes here" );
   });
 
   // click for all of 'change' class
@@ -40,19 +29,8 @@ $(document).ready(function(){
     // get parent class
     var parentClass = parent.attr('class');
     // toggle class color
-    if( parentClass == 'red'){
-      // remove current class and add new class
-      parent.removeClass().addClass('yellow');
-      parent.css({ 'background-color': 'yellow' });
-    }else{
-      parent.removeClass().addClass('red');
-      parent.css({ 'background-color': 'red' });
-    }
+    var parentID = parent.attr('id');
+    console.log( 'id of parent of button: ', parentID, ' class of parent of button: ', parentClass );
   });
 
-  // click for all with class delete
-  $(document).on('click', '.delete', function(){
-    // remove parent
-    $(this).parent().remove();
-  });
 });

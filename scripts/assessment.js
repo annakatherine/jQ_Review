@@ -6,52 +6,34 @@ $(document).ready(function(){
     clicks++;
     console.log( 'generateRow clicked');
     // crete new container div
-    var newContainer = document.createElement('div');
+    var newDiv = document.createElement('div');
     // set class
-    newContainer.className='container';
+    newDiv.className='container';
     // set id
-    newContainer.id='row' + clicks;
-    // create change button
-    var changeButton = document.createElement('button');
-    changeButton.textContent='change';
-    changeButton.className = 'change';
-    // append to container
-    newContainer.appendChild( changeButton );
+    newDiv.id='row' + clicks;
+    newDiv.textContent = "div: " + clicks;
+
     // create delete button
-    var deleteButton = document.createElement('button');
-    deleteButton.textContent='delete';
-    deleteButton.className = 'delete';
+    var newButton = document.createElement('button');
+    newButton.textContent='change Ps';
+    newButton.className = 'changePs';
     // append to container
-    newContainer.appendChild( deleteButton );
-    // create text output
-    var clicksOutput = document.createElement('p');
-    // append to container
-    newContainer.appendChild( clicksOutput );
+    newDiv.appendChild( newButton );
+
+    // create new paragraph tag
+    var newParagraph = document.createElement('p');
+    // append to this div
+    newDiv.appendChild( newParagraph );
+
     // append container to body
-    $('body').append( newContainer );
+    $('body').append( newDiv );
     // set text for all p tags
+
     $('p').text( clicks );
   });
 
-  // click for all of 'change' class
-  $(document).on('click', '.change', function(){
-    // get parent
-    var parent = $(this).parent();
-    // get parent class
-    var parentClass = parent.attr('class');
-    // toggle class color
-    if( parentClass == 'red'){
-      // remove current class and add new class
-      parent.removeClass().addClass('yellow');
-      parent.css({ 'background-color': 'yellow' });
-    }else{
-      parent.removeClass().addClass('red');
-      parent.css({ 'background-color': 'red' });
-    }
-  });
-
   // click for all with class delete
-  $(document).on('click', '.delete', function(){
+  $(document).on('click', '.changePs', function(){
     // remove parent
     $(this).parent().remove();
   });

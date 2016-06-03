@@ -1,27 +1,58 @@
+var clicks= 0;
+
 $(document).ready(function(){
   // click for generateRow id
   $('#generateRow').on('click', function(){
+    clicks++;
     console.log( 'generateRow clicked');
     // crete new container div
-    var newDiv = document.createElement('div');
+    var newContainer = document.createElement('div');
     // set class
-    newDiv.className='container';
+    newContainer.className='container';
     // set id
-    newDiv.id='rowDiv';
+    newContainer.id='row' + clicks;
     // create change button
-    var newButton = document.createElement('button');
-    newButton.textContent='button inside div';
-    newButton.className = 'buttonClass';
+    var changeButton = document.createElement('button');
+    changeButton.textContent='change';
+    changeButton.className = 'change';
     // append to container
-    newDiv.appendChild( newButton );
-    // create text output paragraph
-    var newParagraph = document.createElement('p');
+    newContainer.appendChild( changeButton );
+    // create delete button
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent='delete';
+    deleteButton.className = 'delete';
     // append to container
-    newDiv.appendChild( newParagraph );
+    newContainer.appendChild( deleteButton );
+    // create text output
+    var clicksOutput = document.createElement('p');
+    // append to container
+    newContainer.appendChild( clicksOutput );
     // append container to body
-    $('body').append( newDiv );
+    $('body').append( newContainer );
     // set text for all p tags
-    $('p').text( "WE ARE THE HIVE MIND..." );
+    $('p').text( clicks );
   });
 
+  // click for all of 'change' class
+  $(document).on('click', '.change', function(){
+    // get parent
+    var parent = $(this).parent();
+    // get parent class
+    var parentClass = parent.attr('class');
+    // toggle class color
+    if( parentClass == 'red'){
+      // remove current class and add new class
+      parent.removeClass().addClass('yellow');
+      parent.css({ 'background-color': 'yellow' });
+    }else{
+      parent.removeClass().addClass('red');
+      parent.css({ 'background-color': 'red' });
+    }
+  });
+
+  // click for all with class delete
+  $(document).on('click', '.delete', function(){
+    // remove parent
+    $(this).parent().remove();
+  });
 });

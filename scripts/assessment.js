@@ -6,8 +6,6 @@ $(document).ready(function(){
     var newDiv = document.createElement('div');
     // set class
     newDiv.className='container';
-    // set id
-    newDiv.id='rowDiv';
     // create change button
     var newButton = document.createElement('button');
     newButton.textContent='button inside div';
